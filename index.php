@@ -23,10 +23,11 @@
                     <input type="text" onblur="buscarCnpj(this.value)" data-mask="00.000.000/0000-00" class="form-control">
                 </div>
             </div>
+            <div id="mostarCampos" class="d-none">
             <div class="form-group row">
                 <div class="col-md-6">
                     <label for="razaoSocial">Razão Social</label>
-                    <input type="text" id="razaoSocial" class="form-control">
+                    <input type="text" id="razaoSocial" class="form-control" >
                 </div>
                 <div class="col-md-6">
                     <label for="">Fantasia</label>
@@ -53,6 +54,7 @@
                     <input type="text" id="uf" class="form-control">
                 </div>
             </div>
+            </div>
         </div>
         <div class="col-md-4">
 
@@ -63,6 +65,11 @@
 
         function buscarCnpj( cnpj){
 
+            let remover = document.getElementById('mostarCampos')
+
+            console.log(remover);
+                remover.classList.remove("d-none");
+            
             $.ajax({
                 'url': 'https://receitaws.com.br/v1/cnpj/' + cnpj.replace(/[^0-9]/g, ''),
                 'type': "GET",
@@ -83,9 +90,7 @@
                 }
 
             })
-        }
-
-
+        }  
 
     </script>
 
